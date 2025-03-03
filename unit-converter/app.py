@@ -1,21 +1,5 @@
 import streamlit as st
 
-# Define all categories and their units
-categories = {
-    "Length": ["Kilometer", "Meter", "Centimeter", "Millimeter", "Micrometer", "Nanometer", "Mile", "Yard", "Foot", "Inch", "Nautical Mile"],
-    "Area": ["Square Kilometer", "Square Meter", "Square Centimeter", "Square Millimeter", "Square Mile", "Square Yard", "Square Foot", "Square Inch", "Acre", "Hectare"],
-    "Mass": ["Kilogram", "Gram", "Milligram", "Microgram", "Metric Ton", "Pound", "Ounce", "Carat"],
-    "Data Transform Rate": ["Bit per Second", "Kilobit per Second", "Megabit per Second", "Gigabit per Second", "Terabit per Second", "Byte per Second", "Kilobyte per Second", "Megabyte per Second", "Gigabyte per Second", "Terabyte per Second"],
-    "Digital Storage": ["Bit", "Byte", "Kilobyte", "Megabyte", "Gigabyte", "Terabyte", "Petabyte"],
-    "Energy": ["Joule", "Kilojoule", "Calorie", "Kilocalorie", "Watt-hour", "Kilowatt-hour", "Electronvolt"],
-    "Frequency": ["Hertz", "Kilohertz", "Megahertz", "Gigahertz"],
-    "Fuel Economy": ["Miles per Gallon", "Kilometers per Liter", "Liters per 100 Kilometers"],
-    "Plane Angle": ["Degree", "Radian", "Gradian"],
-    "Pressure": ["Pascal", "Kilopascal", "Bar", "Atmosphere", "Torr", "Pounds per Square Inch"],
-    "Speed": ["Meters per Second", "Kilometers per Hour", "Miles per Hour", "Knot", "Feet per Second"],
-    "Time": ["Second", "Millisecond", "Microsecond", "Minute", "Hour", "Day", "Week", "Month", "Year"],
-    "Volume": ["Cubic Meter", "Liter", "Milliliter", "Cubic Centimeter", "Cubic Inch", "Cubic Foot", "Gallon", "Quart", "Pint", "Fluid Ounce"],
-}
 
 # Define conversion factors for each category 
 conversion_factors = {
@@ -143,14 +127,14 @@ conversion_factors = {
 
 # Sidebar for page selection
 st.sidebar.title("Navigation")
-page = st.sidebar.radio("Go to", list(categories.keys()))
+page = st.sidebar.radio("Go to", list(conversion_factors.keys()))
 
 
 # Page title
 st.title(f"{page} Converter 📏🌡️⚖️")
 
 # Unit selection
-units = categories[page]
+units = conversion_factors[page]
 option_from = st.selectbox(f"Convert {page} From", units, index=None, placeholder="Pick the unit you want to convert from")
 option_to = st.selectbox(f"Convert {page} To", units, index=None, placeholder="Pick the unit you want to convert to")
 
