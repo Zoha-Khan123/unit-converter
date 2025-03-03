@@ -125,18 +125,17 @@ conversion_factors = {
 }
 
 
-# Sidebar for page selection
-st.sidebar.title("Navigation")
-page = st.sidebar.radio("Go to", list(conversion_factors.keys()))
-
 
 # Page title
-st.title(f"{page} Converter 📏🌡️⚖️")
+st.title(f"Universal Unit Converter 📏🌡️⚖️")
+
 
 # Unit selection
-units = conversion_factors[page]
-option_from = st.selectbox(f"Convert {page} From", units, index=None, placeholder="Pick the unit you want to convert from")
-option_to = st.selectbox(f"Convert {page} To", units, index=None, placeholder="Pick the unit you want to convert to")
+unit_selection = st.selectbox("Select Unit",conversion_factors.keys())
+
+
+option_from = st.selectbox(f"Convert {unit_selection} From", conversion_factors[unit_selection], index=None, placeholder="Pick the unit you want to convert from")
+option_to = st.selectbox(f"Convert  {unit_selection} To", conversion_factors[unit_selection], index=None, placeholder="Pick the unit you want to convert to")
 
 
 # Input field
@@ -147,8 +146,8 @@ number = st.number_input(f"Insert a number", value=None, placeholder="Type a num
 # Conversion logic
 if st.button("Convert"):
     if number is not None and option_from and option_to:
-        value_in_base = number / conversion_factors[page][option_from]
-        converted_value = value_in_base * conversion_factors[page][option_to]
+        value_in_base = number / conversion_factors[unit_selection][option_from]
+        converted_value = value_in_base * conversion_factors[unit_selection][option_to]
        # Display detailed conversion message
         st.success(
             f"**Conversion Result:**\n\n"
